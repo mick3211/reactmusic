@@ -12,7 +12,7 @@ function App() {
         <>
             <header className={styles.header}>
                 <h1>
-                    React<span>Music</span>
+                    React<span>fy</span>
                 </h1>
             </header>
 

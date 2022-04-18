@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import TimeLine from '../../inputs/TimeLine/TimeLine';
 import styles from './AudioPlayer.module.css';
+import { FiSkipForward, FiSkipBack, FiPlay, FiPause } from 'react-icons/fi';
 
 export default function AudioPlayer(props) {
     const [isPLaying, setIsPlaying] = useState(false),
@@ -42,6 +43,7 @@ export default function AudioPlayer(props) {
     function handleCanPLay() {
         setDuration(audioRef.current.duration);
         setCanPlay(true);
+        setIsPlaying(true);
     }
 
     function handleEnded() {
@@ -63,14 +65,30 @@ export default function AudioPlayer(props) {
 
     return (
         <div className={styles['player-container']}>
+            <div>
+                <span>{props?.music?.name}</span>
+                <span> {'\u2022'}</span>
+                <span> {props?.music?.artist}</span>
+            </div>
             <div className={styles['button-container']}>
+                <FiSkipBack
+                    className={styles['skip']}
+                    onClick={() => props.onPrev()}
+                />
+
                 <button
+                    type="button"
                     className={styles['play-button']}
                     disabled={!canPlay}
                     onClick={handlePlay}
                 >
-                    {isPLaying ? '\u2759\u2759' : '\u25B8'}
+                    {isPLaying ? <FiPause /> : <FiPlay />}
                 </button>
+
+                <FiSkipForward
+                    className={styles['skip']}
+                    onClick={() => props?.onNext()}
+                />
             </div>
             <TimeLine width={width} onChangeWidth={changeTime} />
             <audio
@@ -78,7 +96,7 @@ export default function AudioPlayer(props) {
                 ref={audioRef}
                 className={styles['audio']}
                 onCanPlay={handleCanPLay}
-                onEnded={handleEnded}
+                onEnded={() => handleEnded()}
             ></audio>
         </div>
     );

@@ -5,7 +5,8 @@ import { useContext } from 'react';
 import { AppContext } from '../../App';
 
 export default function Index() {
-    const { musicList, selectMusic, selectedMusic } = useContext(AppContext);
+    const { musicList, selectMusic, selectedMusic, nextMusic, prevMusic } =
+        useContext(AppContext);
 
     return (
         <div className={styles['page-container']}>
@@ -17,7 +18,9 @@ export default function Index() {
 
             <AudioPlayer
                 music={selectedMusic}
-                onComplete={() => console.log('cabo')}
+                onNext={nextMusic}
+                onPrev={prevMusic}
+                onComplete={nextMusic}
             />
         </div>
     );

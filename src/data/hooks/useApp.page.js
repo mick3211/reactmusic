@@ -26,5 +26,26 @@ export function useApp() {
         setTime(0);
     }
 
-    return { musicList, selectMusic, selectedMusic, time, setTime };
+    function nextMusic() {
+        const nextMusic =
+            musicList[
+                (musicList.indexOf(selectedMusic) + 1) % musicList.length
+            ];
+        selectMusic(nextMusic);
+    }
+
+    function prevMusic() {
+        const prevMusic = musicList.at(musicList.indexOf(selectedMusic) - 1);
+        selectMusic(prevMusic);
+    }
+
+    return {
+        musicList,
+        selectMusic,
+        selectedMusic,
+        time,
+        setTime,
+        nextMusic,
+        prevMusic,
+    };
 }

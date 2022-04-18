@@ -6,6 +6,11 @@
 
 .button-container {
     text-align: center;
+    max-width: 160px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16px auto;
 }
 
 .play-button {
@@ -15,11 +20,13 @@
     border: none;
     cursor: pointer;
     font-size: 32px;
-    margin-bottom: 16px;
+    display: grid;
+    place-items: center;
 }
 
-.play-button:hover {
-    transform: scale(1.05);
+.skip {
+    font-size: 24px;
+    cursor: pointer;
 }
 
 .audio {
