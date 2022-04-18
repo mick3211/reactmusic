@@ -1,0 +1,27 @@
+.player-container {
+    border-top: 1px solid var(--divider);
+    background-color: var(--background-paper);
+    padding: 16px;
+}
+
+.button-container {
+    text-align: center;
+}
+
+.play-button {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 32px;
+    margin-bottom: 16px;
+}
+
+.play-button:hover {
+    transform: scale(1.05);
+}
+
+.audio {
+    display: none;
+}
