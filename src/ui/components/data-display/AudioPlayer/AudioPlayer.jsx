@@ -95,6 +95,8 @@ export default function AudioPlayer(props) {
                 className={styles['audio']}
                 onCanPlay={handleCanPLay}
                 onEnded={() => handleEnded()}
+                onPause={() => setIsPlaying(false)}
+                onPlay={() => setIsPlaying(true)}
             ></audio>
         </div>
     );
