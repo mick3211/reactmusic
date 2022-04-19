@@ -67,8 +67,6 @@ export default function AudioPlayer(props) {
         <div className={styles['player-container']}>
             <div>
                 <span>{props?.music?.name}</span>
-                <span> {'\u2022'}</span>
-                <span> {props?.music?.artist}</span>
             </div>
             <div className={styles['button-container']}>
                 <FiSkipBack

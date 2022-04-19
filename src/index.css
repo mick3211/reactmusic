@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
@@ -25,4 +29,18 @@ code {
 
 * {
     box-sizing: border-box;
+}
+
+@layer utilities {
+    .music-li:hover .li-index {
+        @apply hidden;
+    }
+
+    .music-li-play {
+        @apply hidden;
+    }
+
+    .music-li:hover .music-li-play {
+        @apply inline;
+    }
 }

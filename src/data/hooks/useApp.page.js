@@ -4,16 +4,20 @@ const musicList = [
     {
         id: 1,
         name: 'Someone You Loved - Martin Garrix Remix',
-        artist: 'Martin Garrix',
+        artists: ['Martin Garrix', 'Lewis Capaldi'],
         time: 216,
         url: 'music/Someone You Loved - Martin Garrix Remix.mp3',
+        coverUrl:
+            'https://i1.sndcdn.com/artworks-zFeWKq8iLVA5gcfK-TDSB3A-t500x500.jpg',
     },
     {
         id: 2,
-        name: 'KSHMR - Creep (Radiohead Cover)',
-        artist: 'KSHMR',
+        name: 'Creep (Radiohead Cover)',
+        artists: ['KSHMR', 'RadioHead'],
         time: 242,
         url: 'music/KSHMR - Creep (Radiohead Cover).mp3',
+        coverUrl:
+            'https://i1.sndcdn.com/artworks-000194494845-7x03wb-t500x500.jpg',
     },
 ];
 

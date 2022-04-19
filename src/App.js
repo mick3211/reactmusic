@@ -1,6 +1,6 @@
 import { createContext } from 'react';
-import styles from './App.module.css';
 import { useApp } from './data/hooks/useApp.page';
+import Header from './ui/components/Header';
 import Index from './ui/pages/index';
 
 export const AppContext = createContext({});
@@ -10,11 +10,7 @@ function App() {
 
     return (
         <>
-            <header className={styles.header}>
-                <h1>
-                    React<span>fy</span>
-                </h1>
-            </header>
+            <Header />
 
             <AppContext.Provider value={useAppValues}>
                 <Index />
