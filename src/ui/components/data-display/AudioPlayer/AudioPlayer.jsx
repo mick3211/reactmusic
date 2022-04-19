@@ -1,13 +1,20 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import TimeLine from '../../inputs/TimeLine/TimeLine';
 import styles from './AudioPlayer.module.css';
-import { FiSkipForward, FiSkipBack, FiPlay, FiPause } from 'react-icons/fi';
+import {
+    FiSkipForward,
+    FiSkipBack,
+    FiPlay,
+    FiPause,
+    FiVolume,
+} from 'react-icons/fi';
 
 export default function AudioPlayer(props) {
     const [isPLaying, setIsPlaying] = useState(false),
         [canPlay, setCanPlay] = useState(false),
         [duration, setDuration] = useState(1),
-        [currentTime, setCurrentTime] = useState(0);
+        [currentTime, setCurrentTime] = useState(0),
+        [volume, setVolume] = useState(1);
 
     const width = useMemo(() => {
         return (currentTime / duration) * 100;
@@ -30,7 +37,7 @@ export default function AudioPlayer(props) {
                 audioRef.current.pause();
             }
         }
-    });
+    }, [isPLaying, props.music]);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -51,6 +58,11 @@ export default function AudioPlayer(props) {
         props?.onComplete();
     }
 
+    function changeVolume(percent) {
+        setVolume(percent / 100);
+        audioRef.current.volume = percent / 100;
+    }
+
     function changeTime(percent) {
         if (props.music) {
             audioRef.current.currentTime = (percent / 100) * duration;
@@ -68,25 +80,38 @@ export default function AudioPlayer(props) {
             <div>
                 <span>{props?.music?.name}</span>
             </div>
-            <div className={styles['button-container']}>
-                <FiSkipBack
-                    className={styles['skip']}
-                    onClick={() => props.onPrev()}
-                />
+            <div className="grid grid-cols-[1fr_120px] items-center mb-4">
+                <div className="flex gap-4 items-center justify-center">
+                    <FiSkipBack
+                        className={styles['skip']}
+                        onClick={() => props.onPrev()}
+                    />
 
-                <button
-                    type="button"
-                    className={styles['play-button']}
-                    disabled={!canPlay}
-                    onClick={handlePlay}
-                >
-                    {isPLaying ? <FiPause /> : <FiPlay />}
-                </button>
+                    <button
+                        type="button"
+                        className={styles['play-button']}
+                        disabled={!canPlay}
+                        onClick={handlePlay}
+                    >
+                        {isPLaying ? <FiPause /> : <FiPlay />}
+                    </button>
 
-                <FiSkipForward
-                    className={styles['skip']}
-                    onClick={() => props?.onNext()}
-                />
+                    <FiSkipForward
+                        className={styles['skip']}
+                        onClick={() => props?.onNext()}
+                    />
+                </div>
+                <div className="flex items-center">
+                    <FiVolume
+                        size={24}
+                        className="cursor-pointer"
+                        onClick={() => changeVolume(0)}
+                    />
+                    <TimeLine
+                        width={volume * 100}
+                        onChangeWidth={changeVolume}
+                    />
+                </div>
             </div>
             <TimeLine width={width} onChangeWidth={changeTime} />
             <audio
