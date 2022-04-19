@@ -19,6 +19,33 @@ const musicList = [
         coverUrl:
             'https://i1.sndcdn.com/artworks-000194494845-7x03wb-t500x500.jpg',
     },
+    {
+        id: 3,
+        name: 'Immortal (Original Mix)',
+        artists: ['DVBBS', 'Tony Junior'],
+        time: 302,
+        url: 'music/DVBBS & Tony Junior - Immortal (Original Mix).mp3',
+        coverUrl:
+            'https://i1.sndcdn.com/artworks-000194494845-7x03wb-t500x500.jpg',
+    },
+    {
+        id: 4,
+        name: 'Castle On The Hill (NWYR Remix)',
+        artists: ['Ed Sheeran', 'NWYR'],
+        time: 213,
+        url: 'music/Ed Sheeran - Castle On The Hill (NWYR Remix).mp3',
+        coverUrl:
+            'https://i1.sndcdn.com/artworks-000194494845-7x03wb-t500x500.jpg',
+    },
+    {
+        id: 4,
+        name: 'I Took A Pill in Ibiza (W&W Festival Mix)',
+        artists: ['Mike Posner', 'W&W'],
+        time: 184,
+        url: 'music/Mike Posner I Took A Pill in Ibiza (W&W Festival Mix).mp3',
+        coverUrl:
+            'https://i1.sndcdn.com/artworks-000194494845-7x03wb-t500x500.jpg',
+    },
 ];
 
 export function useApp() {

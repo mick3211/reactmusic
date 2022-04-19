@@ -78,9 +78,11 @@ export default function AudioPlayer(props) {
     return (
         <div className={styles['player-container']}>
             <div>
-                <span>{props?.music?.name}</span>
+                <span>
+                    {props?.music?.name || 'Não há nada tocando no momento...'}
+                </span>
             </div>
-            <div className="grid grid-cols-[1fr_120px] items-center mb-4">
+            <div className="grid grid-cols-[1fr_120px] items-center my-4">
                 <div className="flex gap-4 items-center justify-center">
                     <FiSkipBack
                         className={styles['skip']}
